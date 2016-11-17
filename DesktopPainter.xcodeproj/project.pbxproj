@@ -13,6 +13,7 @@
 		85EA078C1DDDAB57002B5EE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EA078A1DDDAB57002B5EE0 /* MainMenu.xib */; };
 		85EA07951DDDABC9002B5EE0 /* DPPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07941DDDABC9002B5EE0 /* DPPainter.m */; };
 		85EA07981DDDACCC002B5EE0 /* DPImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */; };
+		E5A074011DDDD7F4003A2470 /* DPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A074001DDDD7F4003A2470 /* DPUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		85EA07941DDDABC9002B5EE0 /* DPPainter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPainter.m; sourceTree = "<group>"; };
 		85EA07961DDDACCC002B5EE0 /* DPImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPImageDownloader.h; sourceTree = "<group>"; };
 		85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPImageDownloader.m; sourceTree = "<group>"; };
+		E5A073FF1DDDD7F4003A2470 /* DPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUtility.h; sourceTree = "<group>"; };
+		E5A074001DDDD7F4003A2470 /* DPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +68,8 @@
 				85EA07941DDDABC9002B5EE0 /* DPPainter.m */,
 				85EA07961DDDACCC002B5EE0 /* DPImageDownloader.h */,
 				85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */,
-				85EA07881DDDAB57002B5EE0 /* Assets.xcassets */,
-				85EA078A1DDDAB57002B5EE0 /* MainMenu.xib */,
-				85EA078D1DDDAB57002B5EE0 /* Info.plist */,
+				E5A073FF1DDDD7F4003A2470 /* DPUtility.h */,
+				E5A074001DDDD7F4003A2470 /* DPUtility.m */,
 				85EA07851DDDAB57002B5EE0 /* Supporting Files */,
 			);
 			path = DesktopPainter;
@@ -76,7 +78,10 @@
 		85EA07851DDDAB57002B5EE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85EA07881DDDAB57002B5EE0 /* Assets.xcassets */,
+				85EA078A1DDDAB57002B5EE0 /* MainMenu.xib */,
 				85EA07861DDDAB57002B5EE0 /* main.m */,
+				85EA078D1DDDAB57002B5EE0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				85EA07981DDDACCC002B5EE0 /* DPImageDownloader.m in Sources */,
 				85EA07871DDDAB57002B5EE0 /* main.m in Sources */,
 				85EA07951DDDABC9002B5EE0 /* DPPainter.m in Sources */,
+				E5A074011DDDD7F4003A2470 /* DPUtility.m in Sources */,
 				85EA07841DDDAB57002B5EE0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +303,7 @@
 				85EA07921DDDAB57002B5EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,17 +2,20 @@
 //  DPPainter.h
 //  DesktopPainter
 //
-//  Created by jacky on 17/11/2016.
+//  Created by GoKu on 17/11/2016.
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
+#define kPaintDayByDayMinutesInterval           60
+#define kPaintRandomByMinutesMinimumValue       1
 
 @interface DPPainter : NSObject
 
 + (instancetype)sharedPainter;
 
 - (void)paintDayByDay;
-- (void)paintWithTimeInterval:(NSTimeInterval)timeInterval;
+- (void)paintRandomByMinutes:(NSUInteger)minutes;
 
 @end

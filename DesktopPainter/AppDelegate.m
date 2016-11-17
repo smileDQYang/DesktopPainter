@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  DesktopPainter
 //
-//  Created by jacky on 17/11/2016.
+//  Created by GoKu on 17/11/2016.
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
@@ -18,8 +18,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    
+
     [[DPPainter sharedPainter] paintDayByDay];
+//    [[DPPainter sharedPainter] paintRandomByMinutes:0];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

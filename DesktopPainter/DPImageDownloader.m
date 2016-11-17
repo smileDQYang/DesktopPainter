@@ -2,13 +2,15 @@
 //  DPImageDownloader.m
 //  DesktopPainter
 //
-//  Created by jacky on 17/11/2016.
+//  Created by GoKu on 17/11/2016.
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
-#define kFetchURLFromBing       @"http://www.bing.com/HPImageArchive.aspx?format=js&idx=%d&n=%d"
+#define kFetchTimeout       60
+#define kFetchURL           @"http://www.bing.com/HPImageArchive.aspx?format=js&idx=%d&n=%d"
 
 #import "DPImageDownloader.h"
+#import "DPUtility.h"
 
 @interface DPImageDownloader ()
 
@@ -31,63 +33,137 @@
     return sharedInstance;
 }
 
-- (void)fetchTodayImageWithCompletionHandler:(void (^)(NSError *error, NSURL *imageURL))completionHandler
+- (void)fetchTodayImageWithCompletionHandler:(void (^)(NSError *error, NSURL *downloadedImageURL))completionHandler
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kFetchURLFromBing, 0, 1]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURL, 0, 1]];
+    NSLog(@"fetch URL: %@", fetchURL);
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:fetchURL];
     [[self.session dataTaskWithRequest:request
                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                         NSHTTPURLResponse *ret = (NSHTTPURLResponse *)response;
                         NSLog(@"error: %@, status code: %ld", error, ret.statusCode);
 
-                        if (!error && (ret.statusCode == 200)) {
-                            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                                                 options:NSJSONReadingMutableContainers
-                                                                                   error:NULL];
-                            if (json) {
-                                NSArray *imageList = json[@"images"];
-                                NSDictionary *imageInfo = imageList.firstObject;
-                                NSString *urlString = imageInfo[@"url"];
-                                NSLog(@"image url: %@", urlString);
+                        NSDictionary *json = nil;
+                        if (!error && (ret.statusCode == 200) &&
+                            (json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:NULL])) {
+
+                            NSArray *imageList = json[@"images"];
+                            NSDictionary *imageInfo = imageList.firstObject;
+                            NSString *urlString = imageInfo[@"url"];
+                            NSLog(@"image download URL: %@", urlString);
+
+                            if (urlString) {
                                 NSString *imageName = [urlString lastPathComponent];
-                                
-                                if (urlString) {
+                                NSURL *storageURL = [[DPUtility getStorageDirURL] URLByAppendingPathComponent:imageName];
+                                NSLog(@"image storage URL: %@", storageURL);
+
+                                if ([[NSFileManager defaultManager] fileExistsAtPath:storageURL.path]) {
+                                    NSLog(@"image already downloaded");
+                                    completionHandler(nil, storageURL);
+
+                                } else {
                                     [[self.session downloadTaskWithURL:[NSURL URLWithString:urlString]
-                                                    completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                        NSHTTPURLResponse *ret = (NSHTTPURLResponse *)response;
-                                                        NSLog(@"error: %@, status code: %ld", error, ret.statusCode);
-                                                        
-                                                        if (!error && (ret.statusCode == 200)) {
-                                                            NSLog(@"location: %@", location);
-                                                            NSURL *downloadURL = [[NSFileManager defaultManager] URLsForDirectory:NSDownloadsDirectory
-                                                                                                                        inDomains:NSUserDomainMask].firstObject;
-                                                            NSURL *storage = [downloadURL URLByAppendingPathComponent:imageName];
-                                                            [[NSFileManager defaultManager] moveItemAtURL:location
-                                                                                                    toURL:storage
-                                                                                                    error:NULL];
-                                                            
-                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                                for (NSScreen *screen in [NSScreen screens]) {
-                                                                    [[NSWorkspace sharedWorkspace] setDesktopImageURL:storage
-                                                                                                            forScreen:screen
-                                                                                                              options:@{NSWorkspaceDesktopImageScalingKey: @(NSImageScaleAxesIndependently)}
-                                                                                                                error:NULL];
-                                                                }
-                                                                NSLog(@"set desktop image done");
-                                                            });
-                                                        }
-                                                        
-                                                    }] resume];
+                                                     completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                         NSHTTPURLResponse *ret = (NSHTTPURLResponse *)response;
+                                                         NSLog(@"error: %@, status code: %ld", error, ret.statusCode);
+
+                                                         if (!error && (ret.statusCode == 200)) {
+                                                             [[NSFileManager defaultManager] moveItemAtURL:location
+                                                                                                     toURL:storageURL
+                                                                                                     error:NULL];
+                                                             completionHandler(nil, storageURL);
+
+                                                         } else {
+                                                             NSError *error = [NSError errorWithDomain:@"DesktopPainter.Fetch" code:0 userInfo:nil];
+                                                             completionHandler(error, nil);
+                                                         }
+                                                         
+                                                     }] resume];
                                 }
+
+                            } else {
+                                NSError *error = [NSError errorWithDomain:@"DesktopPainter.Fetch" code:0 userInfo:nil];
+                                completionHandler(error, nil);
                             }
+
+                        } else {
+                            NSError *error = [NSError errorWithDomain:@"DesktopPainter.Fetch" code:0 userInfo:nil];
+                            completionHandler(error, nil);
                         }
                         
                     }] resume];
 }
 
-- (void)batchFetchImagesWithCompletionHandler:(void (^)(NSError *error, NSArray *images))completionHandler
+- (void)batchFetchImagesWithCompletionHandler:(void (^)(NSError *error, NSArray *downloadedImageURLs))completionHandler
 {
-    
+    NSMutableArray *downloadedImageURLs = [NSMutableArray array];
+    dispatch_group_t group = dispatch_group_create();
+
+    for (int i = 0; i <= 20; ++i) {
+        dispatch_group_enter(group);
+
+        NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURL, i, 1]];
+        NSLog(@"fetch URL: %@", fetchURL);
+
+        NSURLRequest *request = [NSURLRequest requestWithURL:fetchURL];
+        [[self.session dataTaskWithRequest:request
+                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                             NSHTTPURLResponse *ret = (NSHTTPURLResponse *)response;
+                             NSLog(@"error: %@, status code: %ld", error, ret.statusCode);
+
+                             NSDictionary *json = nil;
+                             if (!error && (ret.statusCode == 200) &&
+                                 (json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:NULL])) {
+
+                                 NSArray *imageList = json[@"images"];
+                                 NSDictionary *imageInfo = imageList.firstObject;
+                                 NSString *urlString = imageInfo[@"url"];
+                                 NSLog(@"image download URL: %@", urlString);
+
+                                 if (urlString) {
+                                     NSString *imageName = [urlString lastPathComponent];
+                                     NSURL *storageURL = [[DPUtility getStorageDirURL] URLByAppendingPathComponent:imageName];
+                                     NSLog(@"image storage URL: %@", storageURL);
+
+                                     if ([[NSFileManager defaultManager] fileExistsAtPath:storageURL.path]) {
+                                         NSLog(@"image already downloaded");
+                                         [downloadedImageURLs addObject:storageURL];
+                                         dispatch_group_leave(group);
+
+                                     } else {
+                                         [[self.session downloadTaskWithURL:[NSURL URLWithString:urlString]
+                                                          completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                              NSHTTPURLResponse *ret = (NSHTTPURLResponse *)response;
+                                                              NSLog(@"error: %@, status code: %ld", error, ret.statusCode);
+
+                                                              if (!error && (ret.statusCode == 200)) {
+                                                                  [[NSFileManager defaultManager] moveItemAtURL:location
+                                                                                                          toURL:storageURL
+                                                                                                          error:NULL];
+                                                                  [downloadedImageURLs addObject:storageURL];
+                                                                  dispatch_group_leave(group);
+
+                                                              } else {
+                                                                  dispatch_group_leave(group);
+                                                              }
+
+                                                          }] resume];
+                                     }
+
+                                 } else {
+                                     dispatch_group_leave(group);
+                                 }
+                                 
+                             } else {
+                                 dispatch_group_leave(group);
+                             }
+                             
+                         }] resume];
+    }
+
+    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, kFetchTimeout * NSEC_PER_SEC));
+    completionHandler(nil, downloadedImageURLs);
 }
 
 @end
