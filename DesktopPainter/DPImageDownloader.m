@@ -6,11 +6,13 @@
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
-#define kFetchTimeout       60
-#define kFetchURL           @"http://www.bing.com/HPImageArchive.aspx?format=js&idx=%d&n=%d"
-
 #import "DPImageDownloader.h"
 #import "DPUtility.h"
+
+#define kFetchTimeout           60
+
+#define kImageURLPrefixBing     @"Bing."
+#define kFetchURLBing           @"http://www.bing.com/HPImageArchive.aspx?format=js&idx=%d&n=%d"
 
 @interface DPImageDownloader ()
 
@@ -35,7 +37,7 @@
 
 - (void)fetchTodayImageWithCompletionHandler:(void (^)(NSError *error, NSURL *downloadedImageURL))completionHandler
 {
-    NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURL, 0, 1]];
+    NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURLBing, 0, 1]];
     NSLog(@"fetch URL: %@", fetchURL);
 
     NSURLRequest *request = [NSURLRequest requestWithURL:fetchURL];
@@ -54,7 +56,7 @@
                             NSLog(@"image download URL: %@", urlString);
 
                             if (urlString) {
-                                NSString *imageName = [urlString lastPathComponent];
+                                NSString *imageName = [kImageURLPrefixBing stringByAppendingString:[urlString lastPathComponent]];
                                 NSURL *storageURL = [[DPUtility getStorageDirURL] URLByAppendingPathComponent:imageName];
                                 NSLog(@"image storage URL: %@", storageURL);
 
@@ -103,7 +105,7 @@
     for (int i = 0; i <= 20; ++i) {
         dispatch_group_enter(group);
 
-        NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURL, i, 1]];
+        NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURLBing, i, 1]];
         NSLog(@"fetch URL: %@", fetchURL);
 
         NSURLRequest *request = [NSURLRequest requestWithURL:fetchURL];
@@ -122,7 +124,7 @@
                                  NSLog(@"image download URL: %@", urlString);
 
                                  if (urlString) {
-                                     NSString *imageName = [urlString lastPathComponent];
+                                     NSString *imageName = [kImageURLPrefixBing stringByAppendingString:[urlString lastPathComponent]];
                                      NSURL *storageURL = [[DPUtility getStorageDirURL] URLByAppendingPathComponent:imageName];
                                      NSLog(@"image storage URL: %@", storageURL);
 

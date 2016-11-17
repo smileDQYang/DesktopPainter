@@ -19,8 +19,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-    [[DPPainter sharedPainter] paintDayByDay];
-//    [[DPPainter sharedPainter] paintRandomByMinutes:0];
+//    [[DPPainter sharedPainter] paintDayByDay];
+    [[DPPainter sharedPainter] paintRandomByMinutes:0];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
