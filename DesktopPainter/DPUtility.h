@@ -25,4 +25,6 @@
 + (NSDictionary *)paintModeConfig;
 + (void)setPaintModeConfig:(NSDictionary *)config;
 
++ (NSArray *)intervalArraysToPaintRandom;
+
 @end

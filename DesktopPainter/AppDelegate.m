@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DPPainter.h"
 #import "DPUtility.h"
+#import "DPStatusBarController.h"
 
 @interface AppDelegate ()
 
@@ -19,9 +20,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-    [[DPPainter sharedPainter] paintWithModeConfig:[DPUtility paintModeConfig]];
-    
     [DPUtility setupLoginItem];
+    
+    [DPStatusBarController sharedController];
+    
+    [[DPPainter sharedPainter] paintAutomatically];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

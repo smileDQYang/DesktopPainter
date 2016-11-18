@@ -37,20 +37,29 @@
     return sharedInstance;
 }
 
+- (void)paintAutomatically
+{
+    [self paintWithModeConfig:[DPUtility paintModeConfig]];
+}
+
 - (void)paintWithModeConfig:(NSDictionary *)config
 {
     NSLog(@"mode: %@, interval: %@", config[kPaintModeConfigKeyModeType], config[kPaintModeConfigKeyInterval]);
     
     switch ([config[kPaintModeConfigKeyModeType] unsignedIntegerValue]) {
-        case kPaintModeDayByDay:
-            [self paintDayByDay];
-            break;
-            
         case kPaintModeRandom:
-            [self paintRandomByMinutes:[config[kPaintModeConfigKeyInterval] unsignedIntegerValue]];
+        {
+            NSUInteger index = [config[kPaintModeConfigKeyInterval] unsignedIntegerValue];
+            NSNumber *interval = (index < [DPUtility intervalArraysToPaintRandom].count) ? [DPUtility intervalArraysToPaintRandom][index] : [DPUtility intervalArraysToPaintRandom].firstObject;
+            [self paintRandomByMinutes:[interval unsignedIntegerValue]];
+        }
             break;
             
+        case kPaintModeDayByDay:
         default:
+        {
+            [self paintDayByDay];
+        }
             break;
     }
 }

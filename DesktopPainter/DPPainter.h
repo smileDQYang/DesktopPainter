@@ -12,6 +12,7 @@
 
 + (instancetype)sharedPainter;
 
+- (void)paintAutomatically;
 - (void)paintWithModeConfig:(NSDictionary *)config;
 
 @end

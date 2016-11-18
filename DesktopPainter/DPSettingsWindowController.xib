@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DPSettingsWindowController">
+            <connections>
+                <outlet property="checkLoginItem" destination="qha-5p-50y" id="tIM-Ca-2JH"/>
+                <outlet property="chooseModeDayByDay" destination="Nw7-Ol-sHq" id="Tge-NN-DQl"/>
+                <outlet property="chooseModeRandom" destination="WDW-eL-y0F" id="bdb-DC-1ze"/>
+                <outlet property="randomDetailedView" destination="ROI-ap-6Hk" id="Ill-Ct-sZF"/>
+                <outlet property="randomInterval" destination="cyP-ay-awa" id="rLh-Dk-FeS"/>
+                <outlet property="settingAppView" destination="WfO-D1-3K2" id="c6w-zM-SWD"/>
+                <outlet property="settingGeneralView" destination="yCz-hP-FZM" id="kt1-o3-8qh"/>
+                <outlet property="toolbarItemApp" destination="DCS-f9-P7r" id="vMM-NT-wXh"/>
+                <outlet property="toolbarItemGeneral" destination="Lqk-MC-CbL" id="apl-WU-88v"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="DesktopPainter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
+            <rect key="contentRect" x="196" y="240" width="400" height="100"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="0385660C-3759-4F86-9E8C-C8CF37F77BAF" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="kEA-t8-2Bk">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ows-KR-Kn1"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="qqC-G6-F9T"/>
+                    <toolbarItem implicitItemIdentifier="0810F9A3-8932-4A52-AD5E-FB376B0FE2AE" label="General" paletteLabel="General" tag="-1" selectable="YES" id="Lqk-MC-CbL">
+                        <connections>
+                            <action selector="clickTabSettingGeneral:" target="-2" id="yRD-Lt-GCP"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C68566D8-C6E6-4EFF-A59B-84754DEB3EC3" label="App" paletteLabel="App" tag="-1" selectable="YES" id="DCS-f9-P7r">
+                        <connections>
+                            <action selector="clickTabSettingApp:" target="-2" id="cRm-9q-zf6"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="qqC-G6-F9T"/>
+                    <toolbarItem reference="Lqk-MC-CbL"/>
+                    <toolbarItem reference="DCS-f9-P7r"/>
+                    <toolbarItem reference="qqC-G6-F9T"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+        <customView id="yCz-hP-FZM" userLabel="general">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box title="Update Mode" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-Lp-6iw">
+                    <rect key="frame" x="17" y="16" width="366" height="151"/>
+                    <view key="contentView" id="IzY-xj-1Bb">
+                        <rect key="frame" x="1" y="1" width="364" height="135"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Nw7-Ol-sHq">
+                                <rect key="frame" x="19" y="84" width="327" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ddj-bO-bjI"/>
+                                </constraints>
+                                <buttonCell key="cell" type="radio" title="Use Bing's &quot;Today Image&quot;. Update every day." bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="uz7-Va-lJr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickChooseModeDayByDay:" target="-2" id="ZHb-cO-Y0q"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ROI-ap-6Hk">
+                                <rect key="frame" x="40" y="20" width="304" height="25"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-ry-eaj">
+                                        <rect key="frame" x="-2" y="4" width="95" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Update Period:" id="Y4C-Ee-c10">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-ay-awa">
+                                        <rect key="frame" x="97" y="-1" width="142" height="26"/>
+                                        <popUpButtonCell key="cell" type="push" title="Every 10 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" autoenablesItems="NO" selectedItem="lSg-X3-awo" id="qwp-JS-MQy">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name=".AppleSystemUIFont"/>
+                                            <menu key="menu" autoenablesItems="NO" id="wKD-5T-Jzi">
+                                                <items>
+                                                    <menuItem title="Every 10 minutes" state="on" id="lSg-X3-awo"/>
+                                                    <menuItem title="Every 30 minutes" id="LPz-WU-kR0"/>
+                                                    <menuItem title="Every 1 hour" id="tCJ-SZ-Lph"/>
+                                                    <menuItem title="Every 6 hours" id="LhA-gv-oJ4">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="clickRandomInterval:" target="-2" id="OhA-pw-flV"/>
+                                        </connections>
+                                    </popUpButton>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mhG-ry-eaj" firstAttribute="centerY" secondItem="ROI-ap-6Hk" secondAttribute="centerY" id="JT8-zk-Scq"/>
+                                    <constraint firstItem="mhG-ry-eaj" firstAttribute="leading" secondItem="ROI-ap-6Hk" secondAttribute="leading" id="U2d-2p-Uwb"/>
+                                    <constraint firstItem="cyP-ay-awa" firstAttribute="leading" secondItem="mhG-ry-eaj" secondAttribute="trailing" constant="8" symbolic="YES" id="Z54-Av-ryl"/>
+                                    <constraint firstAttribute="bottom" secondItem="cyP-ay-awa" secondAttribute="bottom" constant="2" id="gj3-bC-VMe"/>
+                                    <constraint firstItem="cyP-ay-awa" firstAttribute="top" secondItem="ROI-ap-6Hk" secondAttribute="top" constant="2" id="lYh-21-D3x"/>
+                                </constraints>
+                            </customView>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="WDW-eL-y0F">
+                                <rect key="frame" x="19" y="44" width="314" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iFT-pt-LRC"/>
+                                </constraints>
+                                <buttonCell key="cell" type="radio" title="Choose randomly from Bing's images collection." bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="X1o-yn-amJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickChooseModeRandom:" target="-2" id="rQe-TS-ssa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ROI-ap-6Hk" secondAttribute="bottom" constant="20" id="9Xs-YD-itj"/>
+                            <constraint firstItem="Nw7-Ol-sHq" firstAttribute="leading" secondItem="IzY-xj-1Bb" secondAttribute="leading" constant="20" id="Kr4-Kz-iwA"/>
+                            <constraint firstItem="Nw7-Ol-sHq" firstAttribute="top" secondItem="IzY-xj-1Bb" secondAttribute="top" constant="10" id="aPU-wn-bm1"/>
+                            <constraint firstAttribute="trailing" secondItem="ROI-ap-6Hk" secondAttribute="trailing" constant="20" id="hnL-I0-J99"/>
+                            <constraint firstAttribute="trailing" secondItem="Nw7-Ol-sHq" secondAttribute="trailing" constant="20" id="n59-XM-B7y"/>
+                            <constraint firstItem="WDW-eL-y0F" firstAttribute="top" secondItem="Nw7-Ol-sHq" secondAttribute="bottom" id="p85-pJ-5QO"/>
+                            <constraint firstItem="ROI-ap-6Hk" firstAttribute="leading" secondItem="IzY-xj-1Bb" secondAttribute="leading" constant="40" id="pl4-zI-Gfl"/>
+                            <constraint firstItem="WDW-eL-y0F" firstAttribute="leading" secondItem="IzY-xj-1Bb" secondAttribute="leading" constant="20" id="q6h-EI-yBP"/>
+                            <constraint firstItem="ROI-ap-6Hk" firstAttribute="top" secondItem="WDW-eL-y0F" secondAttribute="bottom" id="t6v-cw-QOf"/>
+                        </constraints>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="4Ex-Lp-6iw" firstAttribute="top" secondItem="yCz-hP-FZM" secondAttribute="top" constant="20" id="SIE-OV-F1l"/>
+                <constraint firstItem="4Ex-Lp-6iw" firstAttribute="leading" secondItem="yCz-hP-FZM" secondAttribute="leading" constant="20" id="TGI-IH-yxU"/>
+                <constraint firstAttribute="bottom" secondItem="4Ex-Lp-6iw" secondAttribute="bottom" constant="20" id="jXZ-OB-xXh"/>
+                <constraint firstAttribute="trailing" secondItem="4Ex-Lp-6iw" secondAttribute="trailing" constant="20" id="vj0-xR-zpP"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="377.5"/>
+        </customView>
+        <customView id="WfO-D1-3K2" userLabel="app">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="qha-5p-50y" userLabel="login">
+                    <rect key="frame" x="18" y="18" width="364" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="QN9-py-fI8"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Launch app automatically after login your Mac." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hPB-95-C4O">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickCheckLoginItem:" target="-2" id="f72-pu-oto"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qha-5p-50y" firstAttribute="leading" secondItem="WfO-D1-3K2" secondAttribute="leading" constant="20" id="6zr-NF-cFZ"/>
+                <constraint firstAttribute="trailing" secondItem="qha-5p-50y" secondAttribute="trailing" constant="20" id="Dno-M9-pMI"/>
+                <constraint firstItem="qha-5p-50y" firstAttribute="top" secondItem="WfO-D1-3K2" secondAttribute="top" constant="20" id="WdR-iC-RNM"/>
+                <constraint firstAttribute="bottom" secondItem="qha-5p-50y" secondAttribute="bottom" constant="20" id="eld-Ju-df3"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="573"/>
+        </customView>
+    </objects>
+</document>

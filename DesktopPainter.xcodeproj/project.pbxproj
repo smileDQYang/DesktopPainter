@@ -12,6 +12,10 @@
 		8588DDF21DDEB03400280ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8588DDF11DDEB03400280ACA /* Assets.xcassets */; };
 		8588DDF51DDEB03400280ACA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8588DDF31DDEB03400280ACA /* MainMenu.xib */; };
 		8588DDFD1DDEB15100280ACA /* DesktopPainterLogin.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8588DDE91DDEB03400280ACA /* DesktopPainterLogin.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8588DE011DDECCA100280ACA /* DPStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8588DDFF1DDECCA100280ACA /* DPStatusBarController.m */; };
+		8588DE021DDECCA100280ACA /* DPStatusBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8588DE001DDECCA100280ACA /* DPStatusBarController.xib */; };
+		8588DE071DDED26D00280ACA /* DPSettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8588DE051DDED26D00280ACA /* DPSettingsWindowController.m */; };
+		8588DE081DDED26D00280ACA /* DPSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8588DE061DDED26D00280ACA /* DPSettingsWindowController.xib */; };
 		85EA07841DDDAB57002B5EE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07831DDDAB57002B5EE0 /* AppDelegate.m */; };
 		85EA07871DDDAB57002B5EE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07861DDDAB57002B5EE0 /* main.m */; };
 		85EA07891DDDAB57002B5EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EA07881DDDAB57002B5EE0 /* Assets.xcassets */; };
@@ -53,6 +57,12 @@
 		8588DDF11DDEB03400280ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8588DDF41DDEB03400280ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8588DDF61DDEB03400280ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8588DDFE1DDECCA100280ACA /* DPStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPStatusBarController.h; sourceTree = "<group>"; };
+		8588DDFF1DDECCA100280ACA /* DPStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPStatusBarController.m; sourceTree = "<group>"; };
+		8588DE001DDECCA100280ACA /* DPStatusBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPStatusBarController.xib; sourceTree = "<group>"; };
+		8588DE041DDED26D00280ACA /* DPSettingsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsWindowController.h; sourceTree = "<group>"; };
+		8588DE051DDED26D00280ACA /* DPSettingsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsWindowController.m; sourceTree = "<group>"; };
+		8588DE061DDED26D00280ACA /* DPSettingsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPSettingsWindowController.xib; sourceTree = "<group>"; };
 		85EA077F1DDDAB57002B5EE0 /* DesktopPainter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopPainter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EA07821DDDAB57002B5EE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		85EA07831DDDAB57002B5EE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -86,17 +96,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8588DDE31DDEAE6D00280ACA /* common */ = {
+		8588DDE31DDEAE6D00280ACA /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				8588DDD71DDE95FA00280ACA /* DPConstants.h */,
 				E5A073FF1DDDD7F4003A2470 /* DPUtility.h */,
 				E5A074001DDDD7F4003A2470 /* DPUtility.m */,
 			);
-			name = common;
+			name = Common;
 			sourceTree = "<group>";
 		};
-		8588DDE41DDEAE7300280ACA /* core */ = {
+		8588DDE41DDEAE7300280ACA /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				85EA07931DDDABC9002B5EE0 /* DPPainter.h */,
@@ -104,7 +114,7 @@
 				85EA07961DDDACCC002B5EE0 /* DPImageDownloader.h */,
 				85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */,
 			);
-			name = core;
+			name = Core;
 			sourceTree = "<group>";
 		};
 		8588DDEA1DDEB03400280ACA /* DesktopPainterLogin */ = {
@@ -126,6 +136,19 @@
 				8588DDF61DDEB03400280ACA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8588DE031DDED23000280ACA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8588DDFE1DDECCA100280ACA /* DPStatusBarController.h */,
+				8588DDFF1DDECCA100280ACA /* DPStatusBarController.m */,
+				8588DE001DDECCA100280ACA /* DPStatusBarController.xib */,
+				8588DE041DDED26D00280ACA /* DPSettingsWindowController.h */,
+				8588DE051DDED26D00280ACA /* DPSettingsWindowController.m */,
+				8588DE061DDED26D00280ACA /* DPSettingsWindowController.xib */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		85EA07761DDDAB57002B5EE0 = {
@@ -151,8 +174,9 @@
 			children = (
 				85EA07821DDDAB57002B5EE0 /* AppDelegate.h */,
 				85EA07831DDDAB57002B5EE0 /* AppDelegate.m */,
-				8588DDE41DDEAE7300280ACA /* core */,
-				8588DDE31DDEAE6D00280ACA /* common */,
+				8588DE031DDED23000280ACA /* UI */,
+				8588DDE41DDEAE7300280ACA /* Core */,
+				8588DDE31DDEAE6D00280ACA /* Common */,
 				85EA07851DDDAB57002B5EE0 /* Supporting Files */,
 			);
 			path = DesktopPainter;
@@ -258,7 +282,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8588DE081DDED26D00280ACA /* DPSettingsWindowController.xib in Resources */,
 				85EA07891DDDAB57002B5EE0 /* Assets.xcassets in Resources */,
+				8588DE021DDECCA100280ACA /* DPStatusBarController.xib in Resources */,
 				85EA078C1DDDAB57002B5EE0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +310,8 @@
 				85EA07951DDDABC9002B5EE0 /* DPPainter.m in Sources */,
 				E5A074011DDDD7F4003A2470 /* DPUtility.m in Sources */,
 				85EA07841DDDAB57002B5EE0 /* AppDelegate.m in Sources */,
+				8588DE071DDED26D00280ACA /* DPSettingsWindowController.m in Sources */,
+				8588DE011DDECCA100280ACA /* DPStatusBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

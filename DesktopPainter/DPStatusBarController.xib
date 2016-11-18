@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DPStatusBarController">
+            <connections>
+                <outlet property="menuItemQuit" destination="rd9-Hg-xT3" id="WbP-ih-Azn"/>
+                <outlet property="menuItemSettings" destination="f5Q-e2-vve" id="H3x-A7-QWK"/>
+                <outlet property="statusBarMenu" destination="FYk-h2-Mjq" id="9Yh-Yz-Gxb"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <menu id="FYk-h2-Mjq">
+            <items>
+                <menuItem title="Settings" id="f5Q-e2-vve">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickMenuItemSettings:" target="-2" id="7km-47-xqc"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="tei-97-esA"/>
+                <menuItem title="Quit" id="rd9-Hg-xT3">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickMenuItemQuit:" target="-2" id="6qG-1x-vDD"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-140" y="81.5"/>
+        </menu>
+    </objects>
+</document>

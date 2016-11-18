@@ -13,9 +13,9 @@
 #define kLoginItemBundleID                      @"com.gokustudio.DesktopPainterLogin"
 
 #define kLoginItemEnabled                       @"LoginItemEnabled"
-#define kLoginItemEnabledDefaultValue           YES
+#define kLoginItemEnabledDefaultValue           NO
 
-#define kPaintModeConfigModeTypeDefaultValue    kPaintModeRandom
+#define kPaintModeConfigModeTypeDefaultValue    kPaintModeDayByDay
 #define kPaintModeConfigIntervalDefaultValue    0
 
 @implementation DPUtility
@@ -127,6 +127,11 @@
         [[NSUserDefaults standardUserDefaults] setObject:interval forKey:kPaintModeConfigKeyInterval];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSArray *)intervalArraysToPaintRandom
+{
+    return @[@(10), @(30), @(1*60), @(6*60)];
 }
 
 @end
