@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DPPainter.h"
+#import "DPUtility.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,8 @@
     // Insert code here to initialize your application
 
     [[DPPainter sharedPainter] paintWithMode:kPaintModeRandom intervalByMinutes:0];
+    
+    [DPUtility setupLoginItem];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

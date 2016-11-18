@@ -15,4 +15,8 @@
 
 + (NSArray *)getRandomImageURLOfCount:(NSUInteger)count;
 
++ (BOOL)setupLoginItem;
++ (BOOL)loginItemEnabled;
++ (void)setLoginItemEnabled:(BOOL)enabled;
+
 @end

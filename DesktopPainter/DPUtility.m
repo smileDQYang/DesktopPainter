@@ -7,6 +7,11 @@
 //
 
 #import "DPUtility.h"
+#import <ServiceManagement/ServiceManagement.h>
+
+#define kLoginItemBundleID              @"com.gokustudio.DesktopPainterLogin"
+#define kLoginItemEnabled               @"LoginItemEnabled"
+#define kLoginItemEnabledDefaultValue   YES
 
 @implementation DPUtility
 
@@ -69,6 +74,26 @@
     }
 
     return ret;
+}
+
++ (BOOL)setupLoginItem
+{
+    BOOL enabled = [DPUtility loginItemEnabled];
+    BOOL ret = SMLoginItemSetEnabled((__bridge CFStringRef)kLoginItemBundleID, enabled);
+    NSLog(@"login item enabled: %d, setup: %d", enabled, ret);
+    return ret;
+}
+
++ (BOOL)loginItemEnabled
+{
+    NSNumber *value = [[NSUserDefaults standardUserDefaults] objectForKey:kLoginItemEnabled];
+    return (value ? [value boolValue] : kLoginItemEnabledDefaultValue);
+}
+
++ (void)setLoginItemEnabled:(BOOL)enabled
+{
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kLoginItemEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

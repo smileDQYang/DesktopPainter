@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8588DDED1DDEB03400280ACA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8588DDEC1DDEB03400280ACA /* AppDelegate.m */; };
+		8588DDF01DDEB03400280ACA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8588DDEF1DDEB03400280ACA /* main.m */; };
+		8588DDF21DDEB03400280ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8588DDF11DDEB03400280ACA /* Assets.xcassets */; };
+		8588DDF51DDEB03400280ACA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8588DDF31DDEB03400280ACA /* MainMenu.xib */; };
+		8588DDFD1DDEB15100280ACA /* DesktopPainterLogin.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8588DDE91DDEB03400280ACA /* DesktopPainterLogin.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		85EA07841DDDAB57002B5EE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07831DDDAB57002B5EE0 /* AppDelegate.m */; };
 		85EA07871DDDAB57002B5EE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA07861DDDAB57002B5EE0 /* main.m */; };
 		85EA07891DDDAB57002B5EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EA07881DDDAB57002B5EE0 /* Assets.xcassets */; };
@@ -16,8 +21,38 @@
 		E5A074011DDDD7F4003A2470 /* DPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A074001DDDD7F4003A2470 /* DPUtility.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8588DDFA1DDEB11100280ACA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85EA07771DDDAB57002B5EE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8588DDE81DDEB03400280ACA;
+			remoteInfo = DesktopPainterLogin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8588DDFC1DDEB11500280ACA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				8588DDFD1DDEB15100280ACA /* DesktopPainterLogin.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8588DDD71DDE95FA00280ACA /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
+		8588DDE91DDEB03400280ACA /* DesktopPainterLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopPainterLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8588DDEB1DDEB03400280ACA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8588DDEC1DDEB03400280ACA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8588DDEF1DDEB03400280ACA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8588DDF11DDEB03400280ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8588DDF41DDEB03400280ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8588DDF61DDEB03400280ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85EA077F1DDDAB57002B5EE0 /* DesktopPainter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopPainter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EA07821DDDAB57002B5EE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		85EA07831DDDAB57002B5EE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -34,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8588DDE61DDEB03400280ACA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85EA077C1DDDAB57002B5EE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,10 +107,32 @@
 			name = core;
 			sourceTree = "<group>";
 		};
+		8588DDEA1DDEB03400280ACA /* DesktopPainterLogin */ = {
+			isa = PBXGroup;
+			children = (
+				8588DDEB1DDEB03400280ACA /* AppDelegate.h */,
+				8588DDEC1DDEB03400280ACA /* AppDelegate.m */,
+				8588DDEE1DDEB03400280ACA /* Supporting Files */,
+			);
+			path = DesktopPainterLogin;
+			sourceTree = "<group>";
+		};
+		8588DDEE1DDEB03400280ACA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8588DDF11DDEB03400280ACA /* Assets.xcassets */,
+				8588DDF31DDEB03400280ACA /* MainMenu.xib */,
+				8588DDEF1DDEB03400280ACA /* main.m */,
+				8588DDF61DDEB03400280ACA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		85EA07761DDDAB57002B5EE0 = {
 			isa = PBXGroup;
 			children = (
 				85EA07811DDDAB57002B5EE0 /* DesktopPainter */,
+				8588DDEA1DDEB03400280ACA /* DesktopPainterLogin */,
 				85EA07801DDDAB57002B5EE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				85EA077F1DDDAB57002B5EE0 /* DesktopPainter.app */,
+				8588DDE91DDEB03400280ACA /* DesktopPainterLogin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,6 +172,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8588DDE81DDEB03400280ACA /* DesktopPainterLogin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8588DDF71DDEB03400280ACA /* Build configuration list for PBXNativeTarget "DesktopPainterLogin" */;
+			buildPhases = (
+				8588DDE51DDEB03400280ACA /* Sources */,
+				8588DDE61DDEB03400280ACA /* Frameworks */,
+				8588DDE71DDEB03400280ACA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DesktopPainterLogin;
+			productName = DesktopPainterLogin;
+			productReference = 8588DDE91DDEB03400280ACA /* DesktopPainterLogin.app */;
+			productType = "com.apple.product-type.application";
+		};
 		85EA077E1DDDAB57002B5EE0 /* DesktopPainter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85EA07901DDDAB57002B5EE0 /* Build configuration list for PBXNativeTarget "DesktopPainter" */;
@@ -114,10 +196,12 @@
 				85EA077B1DDDAB57002B5EE0 /* Sources */,
 				85EA077C1DDDAB57002B5EE0 /* Frameworks */,
 				85EA077D1DDDAB57002B5EE0 /* Resources */,
+				8588DDFC1DDEB11500280ACA /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8588DDFB1DDEB11100280ACA /* PBXTargetDependency */,
 			);
 			name = DesktopPainter;
 			productName = DesktopPainter;
@@ -133,6 +217,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = GoKuStudio;
 				TargetAttributes = {
+					8588DDE81DDEB03400280ACA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					85EA077E1DDDAB57002B5EE0 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -152,11 +239,21 @@
 			projectRoot = "";
 			targets = (
 				85EA077E1DDDAB57002B5EE0 /* DesktopPainter */,
+				8588DDE81DDEB03400280ACA /* DesktopPainterLogin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8588DDE71DDEB03400280ACA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8588DDF21DDEB03400280ACA /* Assets.xcassets in Resources */,
+				8588DDF51DDEB03400280ACA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85EA077D1DDDAB57002B5EE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +266,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8588DDE51DDEB03400280ACA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8588DDF01DDEB03400280ACA /* main.m in Sources */,
+				8588DDED1DDEB03400280ACA /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85EA077B1DDDAB57002B5EE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,7 +289,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8588DDFB1DDEB11100280ACA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8588DDE81DDEB03400280ACA /* DesktopPainterLogin */;
+			targetProxy = 8588DDFA1DDEB11100280ACA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		8588DDF31DDEB03400280ACA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8588DDF41DDEB03400280ACA /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		85EA078A1DDDAB57002B5EE0 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -195,6 +317,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8588DDF81DDEB03400280ACA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DesktopPainterLogin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokustudio.DesktopPainterLogin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8588DDF91DDEB03400280ACA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DesktopPainterLogin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokustudio.DesktopPainterLogin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		85EA078E1DDDAB57002B5EE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +451,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8588DDF71DDEB03400280ACA /* Build configuration list for PBXNativeTarget "DesktopPainterLogin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8588DDF81DDEB03400280ACA /* Debug */,
+				8588DDF91DDEB03400280ACA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		85EA077A1DDDAB57002B5EE0 /* Build configuration list for PBXProject "DesktopPainter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
