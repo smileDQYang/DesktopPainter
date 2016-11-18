@@ -33,12 +33,12 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ows-KR-Kn1"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="qqC-G6-F9T"/>
-                    <toolbarItem implicitItemIdentifier="0810F9A3-8932-4A52-AD5E-FB376B0FE2AE" label="General" paletteLabel="General" tag="-1" selectable="YES" id="Lqk-MC-CbL">
+                    <toolbarItem implicitItemIdentifier="0810F9A3-8932-4A52-AD5E-FB376B0FE2AE" label="General" paletteLabel="General" tag="-1" image="SettingsGeneral" selectable="YES" id="Lqk-MC-CbL">
                         <connections>
                             <action selector="clickTabSettingGeneral:" target="-2" id="yRD-Lt-GCP"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="C68566D8-C6E6-4EFF-A59B-84754DEB3EC3" label="App" paletteLabel="App" tag="-1" selectable="YES" id="DCS-f9-P7r">
+                    <toolbarItem implicitItemIdentifier="C68566D8-C6E6-4EFF-A59B-84754DEB3EC3" label="App" paletteLabel="App" tag="-1" image="AppIcon" selectable="YES" id="DCS-f9-P7r">
                         <connections>
                             <action selector="clickTabSettingApp:" target="-2" id="cRm-9q-zf6"/>
                         </connections>
@@ -93,7 +93,7 @@
                                         <rect key="frame" x="97" y="-1" width="142" height="26"/>
                                         <popUpButtonCell key="cell" type="push" title="Every 10 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" autoenablesItems="NO" selectedItem="lSg-X3-awo" id="qwp-JS-MQy">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".AppleSystemUIFont"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" autoenablesItems="NO" id="wKD-5T-Jzi">
                                                 <items>
                                                     <menuItem title="Every 10 minutes" state="on" id="lSg-X3-awo"/>
@@ -183,4 +183,8 @@
             <point key="canvasLocation" x="140" y="573"/>
         </customView>
     </objects>
+    <resources>
+        <image name="AppIcon" width="128" height="128"/>
+        <image name="SettingsGeneral" width="32" height="32"/>
+    </resources>
 </document>

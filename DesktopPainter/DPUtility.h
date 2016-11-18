@@ -22,9 +22,9 @@
 + (BOOL)loginItemEnabled;
 + (void)setLoginItemEnabled:(BOOL)enabled;
 
++ (NSArray *)intervalArraysToPaintRandom;
+
 + (NSDictionary *)paintModeConfig;
 + (void)setPaintModeConfig:(NSDictionary *)config;
-
-+ (NSArray *)intervalArraysToPaintRandom;
 
 @end

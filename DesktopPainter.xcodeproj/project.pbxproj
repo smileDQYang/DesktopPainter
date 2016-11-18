@@ -352,6 +352,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DesktopPainterLogin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gokustudio.DesktopPainterLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -364,6 +365,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DesktopPainterLogin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gokustudio.DesktopPainterLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,6 +488,7 @@
 				8588DDF91DDEB03400280ACA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85EA077A1DDDAB57002B5EE0 /* Build configuration list for PBXProject "DesktopPainter" */ = {
 			isa = XCConfigurationList;

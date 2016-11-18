@@ -2,7 +2,7 @@
 //  DPStatusBarController.m
 //  DesktopPainter
 //
-//  Created by jacky on 18/11/2016.
+//  Created by GoKu on 18/11/2016.
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @property (nonatomic, strong) DPSettingsWindowController *settingsWindowController;
 
-@property (nonatomic, strong) NSStatusItem *statusItem;
+@property (nonatomic, strong) NSStatusItem  *statusItem;
 
-@property (strong) IBOutlet NSMenu *statusBarMenu;
-@property (weak) IBOutlet NSMenuItem *menuItemSettings;
-@property (weak) IBOutlet NSMenuItem *menuItemQuit;
+@property (strong) IBOutlet NSMenu          *statusBarMenu;
+@property (weak) IBOutlet NSMenuItem        *menuItemSettings;
+@property (weak) IBOutlet NSMenuItem        *menuItemQuit;
 
 @end
 
@@ -48,9 +48,9 @@
     [super loadView];
     
     self.statusItem.toolTip = @"DesktopPainter";
-    self.statusItem.title = self.statusItem.toolTip;
-//    self.statusItem.image = [NSImage imageNamed:@""];
-//    [self.statusItem.image setTemplate:YES];
+//    self.statusItem.title = self.statusItem.toolTip;
+    self.statusItem.image = [NSImage imageNamed:@"StatusBar"];
+    [self.statusItem.image setTemplate:YES];
     self.statusItem.menu = self.statusBarMenu;
 }
 

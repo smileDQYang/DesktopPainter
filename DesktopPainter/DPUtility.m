@@ -101,6 +101,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (NSArray *)intervalArraysToPaintRandom
+{
+    return @[@(10), @(30), @(1*60), @(6*60)];
+}
+
 + (NSDictionary *)paintModeConfig
 {
     NSNumber *modeType = [[NSUserDefaults standardUserDefaults] objectForKey:kPaintModeConfigKeyModeType];
@@ -127,11 +132,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:interval forKey:kPaintModeConfigKeyInterval];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+ (NSArray *)intervalArraysToPaintRandom
-{
-    return @[@(10), @(30), @(1*60), @(6*60)];
 }
 
 @end

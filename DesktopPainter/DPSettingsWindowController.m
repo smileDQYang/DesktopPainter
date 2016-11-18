@@ -2,7 +2,7 @@
 //  DPSettingsWindowController.m
 //  DesktopPainter
 //
-//  Created by jacky on 18/11/2016.
+//  Created by GoKu on 18/11/2016.
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
@@ -13,18 +13,18 @@
 
 @interface DPSettingsWindowController ()
 
-@property (weak) NSToolbarItem *lastSelectedToolbarItem;
+@property (weak) NSToolbarItem          *lastSelectedToolbarItem;
 @property (weak) IBOutlet NSToolbarItem *toolbarItemGeneral;
 @property (weak) IBOutlet NSToolbarItem *toolbarItemApp;
 
-@property (strong) IBOutlet NSView *settingGeneralView;
-@property (weak) IBOutlet NSButton *chooseModeDayByDay;
-@property (weak) IBOutlet NSButton *chooseModeRandom;
-@property (weak) IBOutlet NSView *randomDetailedView;
+@property (strong) IBOutlet NSView      *settingGeneralView;
+@property (weak) IBOutlet NSButton      *chooseModeDayByDay;
+@property (weak) IBOutlet NSButton      *chooseModeRandom;
+@property (weak) IBOutlet NSView        *randomDetailedView;
 @property (weak) IBOutlet NSPopUpButton *randomInterval;
 
-@property (strong) IBOutlet NSView *settingAppView;
-@property (weak) IBOutlet NSButton *checkLoginItem;
+@property (strong) IBOutlet NSView      *settingAppView;
+@property (weak) IBOutlet NSButton      *checkLoginItem;
 
 @end
 
@@ -48,6 +48,7 @@
 - (IBAction)clickTabSettingGeneral:(id)sender {
     if (self.lastSelectedToolbarItem != sender) {
         NSDictionary *config = [DPUtility paintModeConfig];
+
         switch ([config[kPaintModeConfigKeyModeType] unsignedIntegerValue]) {
             case kPaintModeRandom:
             {
