@@ -28,15 +28,22 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DPImageDownloader alloc] init];
-        sharedInstance.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                                               delegate:nil
-                                                          delegateQueue:[[NSOperationQueue alloc] init]];
     });
     return sharedInstance;
 }
 
+- (void)resetSession
+{
+    [self.session invalidateAndCancel];
+    self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                 delegate:nil
+                                            delegateQueue:[[NSOperationQueue alloc] init]];
+}
+
 - (void)fetchTodayImageWithCompletionHandler:(void (^)(NSError *error, NSURL *downloadedImageURL))completionHandler
 {
+    [self resetSession];
+
     NSURL *fetchURL = [NSURL URLWithString:[NSString stringWithFormat:kFetchURLBing, 0, 1]];
     NSLog(@"fetch URL: %@", fetchURL);
 
@@ -99,6 +106,8 @@
 
 - (void)batchFetchImagesWithCompletionHandler:(void (^)(NSError *error, NSArray *downloadedImageURLs))completionHandler
 {
+    [self resetSession];
+    
     NSMutableArray *downloadedImageURLs = [NSMutableArray array];
     dispatch_group_t group = dispatch_group_create();
 
@@ -164,8 +173,13 @@
                          }] resume];
     }
 
-    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, kFetchTimeout * NSEC_PER_SEC));
-    completionHandler(nil, downloadedImageURLs);
+    long ret = dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, kFetchTimeout * NSEC_PER_SEC));
+    if (ret == 0) {
+        completionHandler(nil, downloadedImageURLs);
+    } else {
+        NSError *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:ret userInfo:nil];
+        completionHandler(error, nil);
+    }
 }
 
 @end

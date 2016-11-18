@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8588DDD71DDE95FA00280ACA /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
 		85EA077F1DDDAB57002B5EE0 /* DesktopPainter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopPainter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EA07821DDDAB57002B5EE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		85EA07831DDDAB57002B5EE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,6 +44,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8588DDE31DDEAE6D00280ACA /* common */ = {
+			isa = PBXGroup;
+			children = (
+				8588DDD71DDE95FA00280ACA /* DPConstants.h */,
+				E5A073FF1DDDD7F4003A2470 /* DPUtility.h */,
+				E5A074001DDDD7F4003A2470 /* DPUtility.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		8588DDE41DDEAE7300280ACA /* core */ = {
+			isa = PBXGroup;
+			children = (
+				85EA07931DDDABC9002B5EE0 /* DPPainter.h */,
+				85EA07941DDDABC9002B5EE0 /* DPPainter.m */,
+				85EA07961DDDACCC002B5EE0 /* DPImageDownloader.h */,
+				85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
 		85EA07761DDDAB57002B5EE0 = {
 			isa = PBXGroup;
 			children = (
@@ -64,12 +86,8 @@
 			children = (
 				85EA07821DDDAB57002B5EE0 /* AppDelegate.h */,
 				85EA07831DDDAB57002B5EE0 /* AppDelegate.m */,
-				85EA07931DDDABC9002B5EE0 /* DPPainter.h */,
-				85EA07941DDDABC9002B5EE0 /* DPPainter.m */,
-				85EA07961DDDACCC002B5EE0 /* DPImageDownloader.h */,
-				85EA07971DDDACCC002B5EE0 /* DPImageDownloader.m */,
-				E5A073FF1DDDD7F4003A2470 /* DPUtility.h */,
-				E5A074001DDDD7F4003A2470 /* DPUtility.m */,
+				8588DDE41DDEAE7300280ACA /* core */,
+				8588DDE31DDEAE6D00280ACA /* common */,
 				85EA07851DDDAB57002B5EE0 /* Supporting Files */,
 			);
 			path = DesktopPainter;

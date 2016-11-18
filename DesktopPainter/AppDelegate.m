@@ -11,7 +11,6 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
@@ -19,8 +18,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-//    [[DPPainter sharedPainter] paintDayByDay];
-    [[DPPainter sharedPainter] paintRandomByMinutes:0];
+    [[DPPainter sharedPainter] paintWithMode:kPaintModeRandom intervalByMinutes:0];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

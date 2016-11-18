@@ -10,7 +10,12 @@
 #import "DPImageDownloader.h"
 #import "DPUtility.h"
 
+#define kPaintDayByDayMinutesInterval           60
+#define kPaintRandomByMinutesMinimumValue       5
+
 @interface DPPainter ()
+
+@property (nonatomic, assign) DPPaintModeType   paintMode;
 
 @property (nonatomic, strong) dispatch_source_t timerDayByDay;
 @property (nonatomic, strong) dispatch_source_t timerWithInterval;
@@ -31,6 +36,24 @@
     return sharedInstance;
 }
 
+- (void)paintWithMode:(DPPaintModeType)mode intervalByMinutes:(NSUInteger)intervalByMinutes
+{
+    NSLog(@"mode: %ld, interval: %ld", mode, intervalByMinutes);
+    
+    switch (mode) {
+        case kPaintModeDayByDay:
+            [self paintDayByDay];
+            break;
+            
+        case kPaintModeRandom:
+            [self paintRandomByMinutes:intervalByMinutes];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)paintDayByDay
 {
     [self resetTimer];
@@ -43,35 +66,15 @@
     dispatch_resume(self.timerDayByDay);
 }
 
-- (void)paintDayByDayAction
-{
-    [[DPImageDownloader sharedImageDownloader] fetchTodayImageWithCompletionHandler:^(NSError *error, NSURL *downloadedImageURL) {
-        if (!error && downloadedImageURL) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                for (NSScreen *screen in [NSScreen screens]) {
-                    [[NSWorkspace sharedWorkspace] setDesktopImageURL:downloadedImageURL
-                                                            forScreen:screen
-                                                              options:@{NSWorkspaceDesktopImageScalingKey: @(NSImageScaleAxesIndependently)}
-                                                                error:NULL];
-                }
-                NSLog(@"desktop image painted");
-            });
-
-        } else {
-            NSLog(@"error: %@", error);
-        }
-    }];
-}
-
 - (void)paintRandomByMinutes:(NSUInteger)minutes;
 {
     NSUInteger interval = minutes;
     if (interval < kPaintRandomByMinutesMinimumValue) {
         interval = kPaintRandomByMinutesMinimumValue;
     }
-
+    
     [self resetTimer];
-
+    
     self.timerWithInterval = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
     dispatch_source_set_timer(self.timerWithInterval, DISPATCH_TIME_NOW, interval * 60 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
     dispatch_source_set_event_handler(self.timerWithInterval, ^{
@@ -80,22 +83,59 @@
     dispatch_resume(self.timerWithInterval);
 }
 
+- (void)paintDayByDayAction
+{
+    self.paintMode = kPaintModeDayByDay;
+    
+    [[DPImageDownloader sharedImageDownloader] fetchTodayImageWithCompletionHandler:^(NSError *error, NSURL *downloadedImageURL) {
+        if (self.paintMode != kPaintModeDayByDay) {
+            return;
+        }
+        
+        if (error || !downloadedImageURL) {
+            NSLog(@"error: %@", error);
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (NSScreen *screen in [NSScreen screens]) {
+                [[NSWorkspace sharedWorkspace] setDesktopImageURL:downloadedImageURL
+                                                        forScreen:screen
+                                                          options:@{NSWorkspaceDesktopImageScalingKey: @(NSImageScaleAxesIndependently)}
+                                                            error:NULL];
+            }
+            NSLog(@"desktop image painted");
+        });
+    }];
+}
+
 - (void)paintRandomAction
 {
+    self.paintMode = kPaintModeRandom;
+    
     [[DPImageDownloader sharedImageDownloader] batchFetchImagesWithCompletionHandler:^(NSError *error, NSArray *downloadedImageURLs) {
+        if (self.paintMode != kPaintModeRandom) {
+            return;
+        }
+        
+        if (error || !downloadedImageURLs) {
+            NSLog(@"error: %@", error);
+            return;
+        }
+        
         NSArray *screens = [NSScreen screens];
         NSArray *images = [DPUtility getRandomImageURLOfCount:screens.count];
-
+        
         if (images.count > 0) {
-            for (NSUInteger i = 0; i < screens.count; ++i) {
-                NSLog(@"paint screen %ld with image: %@", i, images[i]);
-                dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                for (NSUInteger i = 0; i < screens.count; ++i) {
+                    NSLog(@"paint screen %ld with image: %@", i, images[i]);
                     [[NSWorkspace sharedWorkspace] setDesktopImageURL:images[i]
                                                             forScreen:screens[i]
                                                               options:@{NSWorkspaceDesktopImageScalingKey: @(NSImageScaleAxesIndependently)}
                                                                 error:NULL];
-                });
-            }
+                }
+            });
         }
     }];
 }

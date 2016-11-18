@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#define kPaintDayByDayMinutesInterval           60
-#define kPaintRandomByMinutesMinimumValue       1
+#import "DPConstants.h"
 
 @interface DPPainter : NSObject
 
 + (instancetype)sharedPainter;
 
-- (void)paintDayByDay;
-- (void)paintRandomByMinutes:(NSUInteger)minutes;
+- (void)paintWithMode:(DPPaintModeType)mode intervalByMinutes:(NSUInteger)intervalByMinutes;
 
 @end

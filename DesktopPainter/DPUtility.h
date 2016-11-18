@@ -12,6 +12,7 @@
 
 + (void)createStorageDirIfNeeded;
 + (NSURL *)getStorageDirURL;
+
 + (NSArray *)getRandomImageURLOfCount:(NSUInteger)count;
 
 @end
