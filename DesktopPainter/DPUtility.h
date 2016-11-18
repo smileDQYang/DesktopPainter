@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kPaintModeConfigKeyModeType     @"PaintModeConfigKeyModeType"
+#define kPaintModeConfigKeyInterval     @"PaintModeConfigKeyInterval"
+
 @interface DPUtility : NSObject
 
 + (void)createStorageDirIfNeeded;
@@ -18,5 +21,8 @@
 + (BOOL)setupLoginItem;
 + (BOOL)loginItemEnabled;
 + (void)setLoginItemEnabled:(BOOL)enabled;
+
++ (NSDictionary *)paintModeConfig;
++ (void)setPaintModeConfig:(NSDictionary *)config;
 
 @end

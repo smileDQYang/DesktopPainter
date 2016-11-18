@@ -7,11 +7,16 @@
 //
 
 #import "DPUtility.h"
+#import "DPConstants.h"
 #import <ServiceManagement/ServiceManagement.h>
 
-#define kLoginItemBundleID              @"com.gokustudio.DesktopPainterLogin"
-#define kLoginItemEnabled               @"LoginItemEnabled"
-#define kLoginItemEnabledDefaultValue   YES
+#define kLoginItemBundleID                      @"com.gokustudio.DesktopPainterLogin"
+
+#define kLoginItemEnabled                       @"LoginItemEnabled"
+#define kLoginItemEnabledDefaultValue           YES
+
+#define kPaintModeConfigModeTypeDefaultValue    kPaintModeRandom
+#define kPaintModeConfigIntervalDefaultValue    0
 
 @implementation DPUtility
 
@@ -93,6 +98,34 @@
 + (void)setLoginItemEnabled:(BOOL)enabled
 {
     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kLoginItemEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSDictionary *)paintModeConfig
+{
+    NSNumber *modeType = [[NSUserDefaults standardUserDefaults] objectForKey:kPaintModeConfigKeyModeType];
+    if (!modeType) {
+        modeType = @(kPaintModeConfigModeTypeDefaultValue);
+    }
+    NSNumber *interval = [[NSUserDefaults standardUserDefaults] objectForKey:kPaintModeConfigKeyInterval];
+    if (!interval) {
+        interval = @(kPaintModeConfigIntervalDefaultValue);
+    }
+    
+    return @{kPaintModeConfigKeyModeType: modeType,
+             kPaintModeConfigKeyInterval: interval};
+}
+
++ (void)setPaintModeConfig:(NSDictionary *)config
+{
+    NSNumber *modeType = [config objectForKey:kPaintModeConfigKeyModeType];
+    NSNumber *interval = [config objectForKey:kPaintModeConfigKeyInterval];
+    if (modeType) {
+        [[NSUserDefaults standardUserDefaults] setObject:modeType forKey:kPaintModeConfigKeyModeType];
+    }
+    if (interval) {
+        [[NSUserDefaults standardUserDefaults] setObject:interval forKey:kPaintModeConfigKeyInterval];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

@@ -19,7 +19,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-    [[DPPainter sharedPainter] paintWithMode:kPaintModeRandom intervalByMinutes:0];
+    [[DPPainter sharedPainter] paintWithModeConfig:[DPUtility paintModeConfig]];
     
     [DPUtility setupLoginItem];
 }

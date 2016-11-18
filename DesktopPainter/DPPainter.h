@@ -6,13 +6,12 @@
 //  Copyright © 2016 GoKuStudio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "DPConstants.h"
+#import <Cocoa/Cocoa.h>
 
 @interface DPPainter : NSObject
 
 + (instancetype)sharedPainter;
 
-- (void)paintWithMode:(DPPaintModeType)mode intervalByMinutes:(NSUInteger)intervalByMinutes;
+- (void)paintWithModeConfig:(NSDictionary *)config;
 
 @end

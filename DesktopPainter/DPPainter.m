@@ -9,6 +9,7 @@
 #import "DPPainter.h"
 #import "DPImageDownloader.h"
 #import "DPUtility.h"
+#import "DPConstants.h"
 
 #define kPaintDayByDayMinutesInterval           60
 #define kPaintRandomByMinutesMinimumValue       5
@@ -36,17 +37,17 @@
     return sharedInstance;
 }
 
-- (void)paintWithMode:(DPPaintModeType)mode intervalByMinutes:(NSUInteger)intervalByMinutes
+- (void)paintWithModeConfig:(NSDictionary *)config
 {
-    NSLog(@"mode: %ld, interval: %ld", mode, intervalByMinutes);
+    NSLog(@"mode: %@, interval: %@", config[kPaintModeConfigKeyModeType], config[kPaintModeConfigKeyInterval]);
     
-    switch (mode) {
+    switch ([config[kPaintModeConfigKeyModeType] unsignedIntegerValue]) {
         case kPaintModeDayByDay:
             [self paintDayByDay];
             break;
             
         case kPaintModeRandom:
-            [self paintRandomByMinutes:intervalByMinutes];
+            [self paintRandomByMinutes:[config[kPaintModeConfigKeyInterval] unsignedIntegerValue]];
             break;
             
         default:
